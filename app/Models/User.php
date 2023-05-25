@@ -42,4 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //Gets First & Last Word Initials of Auth User Names
+    public function getInitialsAttribute()
+    {
+        $name = $this->name;
+        $name_array = explode(' ', trim($name));
+
+        $firstWord = $name_array[0];
+        $lastWord = $name_array[count($name_array) - 1];
+
+        return $firstWord[0] . $lastWord[0];
+    }
 }

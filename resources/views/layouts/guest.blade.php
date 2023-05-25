@@ -1,30 +1,56 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="{{ $dark_mode ? 'dark' : '' }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon" type="image/svg+xml">
+    <title>
+        @if (!empty($title))
+            {{ $title . ' | ' }}{{ config('app.name', 'Laravel') }}
+        @else
+            {{ config('app.name', 'Laravel') }}
+        @endif
+    </title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+
+    <!-- Scripts -->
+    @vite('resources/js/app.js')
+    @stack('styles')
+</head>
+
+<body class="login">
+
+    <div class="container sm:px-10">
+        <div class="block grid-cols-2 gap-4 xl:grid">
+            <!-- BEGIN: Login Info -->
+            <div class="flex-col hidden min-h-screen xl:flex">
+                <x-logo class="items-center pt-5 -intro-x">
+                    <span class="ml-3 text-lg text-white">
+                        {{ config('app.name', 'Laravel') }}
+                    </span>
+                </x-logo>
+                <div class="my-auto">
+                    {{ $left }}
+                </div>
             </div>
-
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+            <!-- END: Login Info -->
+            <div class="flex h-screen py-5 my-10 xl:h-auto xl:py-0 xl:my-0">
+                <div
+                    class="w-full px-5 py-8 mx-auto my-auto bg-white rounded-md shadow-md xl:ml-20 dark:bg-darkmode-600 xl:bg-transparent sm:px-8 xl:p-0 xl:shadow-none sm:w-3/4 lg:w-2/4 xl:w-auto">
+                    {{ $right }}
+                </div>
             </div>
         </div>
-    </body>
+    </div>
+
+    @include('layouts.bePartials.dark-mode-switch')
+
+    @stack('scripts')
+</body>
+
 </html>

@@ -14,6 +14,7 @@
         "dietercoopman/smart": "*",
         "diglactic/laravel-breadcrumbs": "*",
         "guzzlehttp/guzzle": "^7.2",
+        "jenssegers/agent": "^2.6",
         "jorenvanhocht/laravel-share": "*",
         "kirschbaum-development/eloquent-power-joins": "*",
         "lab404/laravel-impersonate": "*",
@@ -49,7 +50,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

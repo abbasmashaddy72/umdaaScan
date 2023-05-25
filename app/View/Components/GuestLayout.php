@@ -12,6 +12,8 @@ class GuestLayout extends Component
      */
     public function render(): View
     {
+        view()->share('dark_mode', session()->has('dark_mode') ? filter_var(session('dark_mode'), FILTER_VALIDATE_BOOLEAN) : false);
+
         return view('layouts.guest');
     }
 }
