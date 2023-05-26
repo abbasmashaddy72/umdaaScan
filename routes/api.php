@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['as' => 'api.admin.', 'namespace' => 'App\Http\Controllers'], function () {
+    Route::get('doctors', 'ApiController@doctors')->name('doctors');
+    Route::get('patients', 'ApiController@patients')->name('patients');
+    Route::get('localities', 'ApiController@localities')->name('localities');
+});

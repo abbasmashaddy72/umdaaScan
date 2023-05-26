@@ -34,10 +34,30 @@ class AppLayout extends Component
                 'title' => 'Dashboard',
                 'route_name' => 'admin.dashboard',
             ],
+            'role' => [
+                'icon' => 'settings',
+                'title' => 'Roles',
+                'route_name' => 'admin.roles.index',
+            ],
             'users' => [
-                'icon' => 'user',
+                'icon' => 'user-check',
                 'title' => 'Users',
                 'route_name' => 'admin.users.index',
+            ],
+            'doctors' => [
+                'icon' => 'user-plus',
+                'title' => 'Doctors',
+                'route_name' => 'admin.doctors.index',
+            ],
+            'patients' => [
+                'icon' => 'users',
+                'title' => 'Patients',
+                'route_name' => 'admin.patients.index',
+            ],
+            'appointments' => [
+                'icon' => 'clock',
+                'title' => 'Appointments',
+                'route_name' => 'admin.appointments.index',
             ]
         ];
     }

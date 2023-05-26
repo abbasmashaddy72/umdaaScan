@@ -24,7 +24,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['web', 'au
         return view('dashboard');
     })->name('dashboard');
 
+    Route::get('roles', 'RoleController@index')->name('roles.index');
     Route::get('users', 'UserController@index')->name('users.index');
+
+    Route::get('patients', 'PatientController@index')->name('patients.index');
+    Route::get('doctors', 'DoctorController@index')->name('doctors.index');
+    Route::get('appointments', 'AppointmentController@index')->name('appointments.index');
+
 
     Route::get('/profile', 'ProfileController@edit')->name('profile.edit');
     Route::patch('/profile', 'ProfileController@update')->name('profile.update');

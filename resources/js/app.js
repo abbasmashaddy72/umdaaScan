@@ -11,8 +11,12 @@ window.FilePond = FilePond;
 window.createPopper = createPopper;
 
 window.Alpine = Alpine;
-Alpine.start();
 Alpine.plugin(focus);
+
+import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
+import './../../vendor/power-components/livewire-powergrid/dist/powergrid.css'
+
+Alpine.start();
 
 /*
  |--------------------------------------------------------------------------

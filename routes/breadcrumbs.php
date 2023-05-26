@@ -16,11 +16,29 @@ Breadcrumbs::for('#', function (BreadcrumbTrail $trail) {
 // Application > User
 Breadcrumbs::for('user.index', function (BreadcrumbTrail $trail) {
     $trail->parent('#');
-    $trail->push('User', route('admin.user'));
+    $trail->push('User', route('admin.users.index'));
 });
 
 // Application > Role
 Breadcrumbs::for('role.index', function (BreadcrumbTrail $trail) {
     $trail->parent('#');
-    $trail->push('Role', route('admin.role'));
+    $trail->push('Role', route('admin.roles.index'));
+});
+
+// Application > Doctor
+Breadcrumbs::for('doctor.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('#');
+    $trail->push('Doctor', route('admin.doctors.index'));
+});
+
+// Application > Patient
+Breadcrumbs::for('patient.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('#');
+    $trail->push('Patient', route('admin.patients.index'));
+});
+
+// Application > Appointment
+Breadcrumbs::for('appointment.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('#');
+    $trail->push('Appointment', route('admin.appointments.index'));
 });

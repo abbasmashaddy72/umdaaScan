@@ -7,7 +7,10 @@ const {
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     mode: "jit",
-    presets: [require("../../vendor/wireui/wireui/tailwind.config.js")],
+    presets: [
+        require("../../vendor/wireui/wireui/tailwind.config.js"),
+        require("../../vendor/power-components/livewire-powergrid/tailwind.config.js"),
+    ],
     content: [
         "./app/Http/Livewire/Backend/**/*.php",
         "./config/livewire-datatables.php",
@@ -25,6 +28,8 @@ module.exports = {
         "./resources/views/profile/**/*.blade.php",
         "./resources/views/vendor/**/*.blade.php",
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
+        "./vendor/power-components/livewire-powergrid/resources/views/**/*.php",
+        "./vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php",
         "./vendor/wire-elements/modal/resources/views/*.blade.php",
         "./vendor/wireui/wireui/resources/**/*.blade.php",
         "./vendor/wireui/wireui/ts/**/*.ts",
@@ -43,6 +48,7 @@ module.exports = {
     theme: {
         extend: {
             colors: {
+                "pg-primary": colors.gray,
                 rgb: toRGB(colors),
                 primary: withOpacityValue("--color-primary"),
                 secondary: withOpacityValue("--color-secondary"),
@@ -96,7 +102,11 @@ module.exports = {
             },
         },
     },
-    plugins: [require("@tailwindcss/forms")],
+    plugins: [
+        require("@tailwindcss/forms")({
+            strategy: "class",
+        }),
+    ],
     variants: {
         extend: {
             boxShadow: ["dark"],

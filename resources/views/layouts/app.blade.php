@@ -23,8 +23,14 @@
         {{ config('app.name', 'Laravel') }}
     </title>
 
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+
+    @wireUiScripts
     @vite('resources/js/app.js')
-    <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
     @stack('styles')
     @livewireStyles
 </head>
