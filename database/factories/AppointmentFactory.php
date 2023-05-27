@@ -34,7 +34,7 @@ class AppointmentFactory extends Factory
             'date' => fake()->date(),
             'time' => fake()->time(),
             'description' => fake()->text(300),
-            'prescription_image' => $random_array,
+            'prescription_images' => $random_array,
         ];
     }
 }

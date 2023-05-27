@@ -107,6 +107,9 @@ final class AppointmentTable extends PowerGridComponent
                 return Str::words(e($model->description), 8);
             })
             ->addColumn('created_at_formatted', fn (Appointment $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
+            ->addColumn('prescription', function (Appointment $model) {
+                return view('pages.backend.appointments.prescription', ['prescription_images' => $model->prescription_images, 'name' => $model->patient_id]);
+            })
             ->addColumn('action', function (Appointment $model) {
                 return view('pages.backend.appointments.action', ['id' => $model->id]);
             });
@@ -142,6 +145,8 @@ final class AppointmentTable extends PowerGridComponent
             Column::make('Description', 'description')
                 ->sortable()
                 ->searchable(),
+
+            Column::make('Prescription Images', 'prescription'),
 
             Column::make('Created at', 'created_at_formatted', 'created_at')
                 ->sortable(),

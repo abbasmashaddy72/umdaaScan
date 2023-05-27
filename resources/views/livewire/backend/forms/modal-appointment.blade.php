@@ -15,10 +15,10 @@
 
         <div class="card">
             <div class="card-body">
-                @if (!empty($prescription_image))
+                @if (!empty($prescription_images))
                     Photo Preview:
                     <div class="grid grid-cols-5 gap-1">
-                        @foreach ($prescription_image as $key => $image)
+                        @foreach ($prescription_images as $key => $image)
                             <div class="relative">
                                 <img class="object-cover w-10 h-10 rounded-md"
                                     src="{{ $this->isUploaded ? $image->temporaryUrl() : asset('storage/' . $image) }}">
@@ -41,9 +41,9 @@
                     </div>
                 @endif
                 <div class="mb-3">
-                    <x-input name="prescription_image" label="Upload Prescription Images" type="file"
-                        wire:model.defer='prescription_image' multiple />
-                    <div wire:loading wire:target="prescription_image">Uploading...</div>
+                    <x-input name="prescription_images" label="Upload Prescription Images" type="file"
+                        wire:model.defer='prescription_images' multiple />
+                    <div wire:loading wire:target="prescription_images">Uploading...</div>
                 </div>
             </div>
         </div>

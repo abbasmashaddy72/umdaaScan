@@ -35,7 +35,8 @@ class PermissionSeeder extends Seeder
             ['Appointment List'],
             ['Appointment Add'],
             ['Appointment Edit'],
-            ['Appointment Delete'],
+            ['Dashboard'],
+            ['Prescription View'],
         ];
 
         foreach ($inputs as $data) {

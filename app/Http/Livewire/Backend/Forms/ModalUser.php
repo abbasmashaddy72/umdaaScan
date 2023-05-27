@@ -4,9 +4,10 @@ namespace App\Http\Livewire\Backend\Forms;
 
 use App\Models\Role;
 use App\Models\User;
+use WireUi\Traits\Actions;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use LivewireUI\Modal\ModalComponent;
-use WireUi\Traits\Actions;
 
 class ModalUser extends ModalComponent
 {
@@ -21,8 +22,10 @@ class ModalUser extends ModalComponent
     public function mount()
     {
         if (empty($this->user_id)) {
+            abort_if(Gate::denies('user_add'), 403);
             return;
         }
+        abort_if(Gate::denies('user_edit'), 403);
         $data = User::findOrFail($this->user_id);
         $this->name = $data->name;
         $this->email = $data->email;

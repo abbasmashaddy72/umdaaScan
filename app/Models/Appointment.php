@@ -16,11 +16,11 @@ class Appointment extends Model
         'date',
         'time',
         'description',
-        'prescription_image',
+        'prescription_images',
     ];
 
     protected $casts = [
-        'prescription_image' => 'array',
+        'prescription_images' => 'array',
     ];
 
     public function doctor()

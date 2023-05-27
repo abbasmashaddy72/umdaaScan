@@ -44,7 +44,7 @@ class ApiController extends Controller
 
     public function localities(Request $request)
     {
-        $localities = [];
+        $data = [];
         $perPage = 100; // Number of records to process per chunk
 
         $searchTerm = $request->search;
@@ -61,22 +61,11 @@ class ApiController extends Controller
             }, function ($query) {
                 $query->limit(10);
             })
-            ->chunk($perPage, function ($results) use (&$localities) {
+            ->chunk($perPage, function ($results) use (&$data) {
                 foreach ($results as $result) {
-                    $localities[] = $result;
+                    $data[] = $result;
                 }
             });
-        $data = $localities;
-
-        // $data = Locality::query()->join('cities', 'cities.id', '=', 'localities.city_id')->select('localities.id as id', DB::Raw("CONCAT(localities.name, ', ', cities.name) AS localityCity"))
-        //     ->orderBy('localities.name')
-        //     ->when($request->search, fn (Builder $query) => $query->where('localities.name', 'like', "%{$request->search}%"))
-        //     ->when(
-        //         $request->exists('selected'),
-        //         fn (Builder $query) => $query->whereIn('localities.id', $request->input('selected', [])),
-        //         fn (Builder $query) => $query->limit(10)
-        //     )
-        //     ->get();
 
         return $data;
     }

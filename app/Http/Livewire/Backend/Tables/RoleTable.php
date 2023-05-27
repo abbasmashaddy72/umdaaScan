@@ -103,8 +103,6 @@ final class RoleTable extends PowerGridComponent
             ->addColumn('users_count')
             /** Example of custom column using a closure **/
             ->addColumn('name_lower', fn (Role $model) => strtolower(e($model->name)))
-
-            ->addColumn('slug')
             ->addColumn('created_at_formatted', fn (Role $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
             ->addColumn('action', function (Role $model) {
                 return view('pages.backend.roles.action', ['id' => $model->id]);
@@ -138,10 +136,6 @@ final class RoleTable extends PowerGridComponent
 
             Column::make('Users Count', 'users_count')
                 ->sortable(),
-
-            Column::make('Slug', 'slug')
-                ->sortable()
-                ->searchable(),
 
             Column::make('Created at', 'created_at_formatted', 'created_at')
                 ->sortable(),

@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire\Backend\Forms;
 
-use App\Models\Patient;
 use Carbon\Carbon;
-use LivewireUI\Modal\ModalComponent;
+use App\Models\Patient;
 use WireUi\Traits\Actions;
+use Illuminate\Support\Facades\Gate;
+use LivewireUI\Modal\ModalComponent;
 
 class ModalPatient extends ModalComponent
 {
@@ -20,8 +21,10 @@ class ModalPatient extends ModalComponent
     public function mount()
     {
         if (empty($this->patient_id)) {
+            abort_if(Gate::denies('patient_add'), 403);
             return;
         }
+        abort_if(Gate::denies('patient_edit'), 403);
         $data = Patient::findOrFail($this->patient_id);
         $this->uuid = $data->uuid;
         $this->locality_id = $data->locality_id;

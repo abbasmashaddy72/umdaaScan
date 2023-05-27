@@ -19,10 +19,7 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['web', 'auth', 'verified'], 'namespace' => 'App\Http\Controllers'], function () {
-    Route::get('/dashboard', function () {
-        view()->share('title', 'Dashboard');
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
     Route::get('roles', 'RoleController@index')->name('roles.index');
     Route::get('users', 'UserController@index')->name('users.index');

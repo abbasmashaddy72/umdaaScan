@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('date');
             $table->time('time')->format('H:i');
             $table->longText('description')->nullable();
-            $table->json('prescription_image')->nullable();
+            $table->json('prescription_images')->nullable();
             $table->timestamps();
         });
     }

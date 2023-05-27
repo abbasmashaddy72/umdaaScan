@@ -13,10 +13,13 @@ window.createPopper = createPopper;
 window.Alpine = Alpine;
 Alpine.plugin(focus);
 
-import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
-import './../../vendor/power-components/livewire-powergrid/dist/powergrid.css'
+import "./../../vendor/power-components/livewire-powergrid/dist/powergrid";
+import "./../../vendor/power-components/livewire-powergrid/dist/powergrid.css";
 
 Alpine.start();
+
+import lightbox from "lightbox2";
+window.lightbox = lightbox;
 
 /*
  |--------------------------------------------------------------------------
@@ -65,4 +68,3 @@ import "./components/new-dark-mode-switcher";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 window.ClassicEditor = ClassicEditor;
-

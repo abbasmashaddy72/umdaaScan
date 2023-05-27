@@ -124,6 +124,8 @@ Form Component
 @import "filepond/dist/filepond.min.css";
 @import "flatpickr/dist/flatpickr.min.css";
 
+@import "lightbox2/src/css/lightbox.css";
+
 [x-cloak] {
     display: none;
 }
@@ -139,3 +141,43 @@ Form Component
 .row-gap-0 {
     row-gap: 0;
 }
+
+.report-box{
+    position: relative;
+}
+.report-box:before {
+        content: "";
+        width: 90%;
+        box-shadow: 0px 3px 20px #0000000b;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0.75rem;
+        height: 100%;
+        border-radius: 0.375rem;
+        --tw-bg-opacity: 1;
+        background-color: rgb(var(--color-slate-50) / var(--tw-bg-opacity));
+    }
+.dark .report-box:before{
+    background-color: rgb(var(--color-darkmode-400) / 0.7);
+}
+.report-box .report-box__icon {
+        width: 28px;
+        height: 28px;
+    }
+.report-box .report-box__indicator {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        display: flex;
+        align-items: center;
+        border-radius: 9999px;
+        padding-left: 0.5rem;
+        padding-right: 0.25rem;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        font-weight: 500;
+        --tw-text-opacity: 1;
+        color: rgb(255 255 255 / var(--tw-text-opacity));
+    }

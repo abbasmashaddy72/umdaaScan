@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire\Backend\Forms;
 
-use App\Models\Permission;
 use App\Models\Role;
-use LivewireUI\Modal\ModalComponent;
+use App\Models\Permission;
 use WireUi\Traits\Actions;
+use Illuminate\Support\Facades\Gate;
+use LivewireUI\Modal\ModalComponent;
 
 class ModalRole extends ModalComponent
 {
@@ -20,8 +21,10 @@ class ModalRole extends ModalComponent
     public function mount()
     {
         if (empty($this->role_id)) {
+            abort_if(Gate::denies('role_add'), 403);
             return;
         }
+        abort_if(Gate::denies('role_edit'), 403);
         $data = Role::findOrFail($this->role_id);
         $this->name = $data->name;
         $this->slug = $data->slug;

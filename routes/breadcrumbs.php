@@ -42,3 +42,9 @@ Breadcrumbs::for('appointment.index', function (BreadcrumbTrail $trail) {
     $trail->parent('#');
     $trail->push('Appointment', route('admin.appointments.index'));
 });
+
+// Application > Profile
+Breadcrumbs::for('profile.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('#');
+    $trail->push('Profile', route('admin.profile.edit'));
+});

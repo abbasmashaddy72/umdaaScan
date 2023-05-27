@@ -30,31 +30,37 @@ class AppLayout extends Component
     {
         return [
             'dashboard' => [
+                'can' => 'dashboard',
                 'icon' => 'home',
                 'title' => 'Dashboard',
                 'route_name' => 'admin.dashboard',
             ],
-            'role' => [
+            'roles' => [
+                'can' => 'role_list',
                 'icon' => 'settings',
                 'title' => 'Roles',
                 'route_name' => 'admin.roles.index',
             ],
             'users' => [
+                'can' => 'user_list',
                 'icon' => 'user-check',
                 'title' => 'Users',
                 'route_name' => 'admin.users.index',
             ],
             'doctors' => [
+                'can' => 'doctor_list',
                 'icon' => 'user-plus',
                 'title' => 'Doctors',
                 'route_name' => 'admin.doctors.index',
             ],
             'patients' => [
+                'can' => 'patient_list',
                 'icon' => 'users',
                 'title' => 'Patients',
                 'route_name' => 'admin.patients.index',
             ],
             'appointments' => [
+                'can' => 'appointment_list',
                 'icon' => 'clock',
                 'title' => 'Appointments',
                 'route_name' => 'admin.appointments.index',

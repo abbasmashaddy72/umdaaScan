@@ -3,8 +3,9 @@
 namespace App\Http\Livewire\Backend\Forms;
 
 use App\Models\Doctor;
-use LivewireUI\Modal\ModalComponent;
 use WireUi\Traits\Actions;
+use Illuminate\Support\Facades\Gate;
+use LivewireUI\Modal\ModalComponent;
 
 class ModalDoctor extends ModalComponent
 {
@@ -17,8 +18,10 @@ class ModalDoctor extends ModalComponent
     public function mount()
     {
         if (empty($this->doctor_id)) {
+            abort_if(Gate::denies('doctor_add'), 403);
             return;
         }
+        abort_if(Gate::denies('doctor_edit'), 403);
         $data = Doctor::findOrFail($this->doctor_id);
         $this->name = $data->name;
         $this->locality_id = $data->locality_id;
