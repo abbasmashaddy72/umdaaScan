@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
 
@@ -24,11 +25,17 @@ class RoleSeeder extends Seeder
         ];
 
         foreach ($inputs as $data) {
-            Role::create([
+            $role = Role::create([
                 'id' => $data[0],
                 'name' => $data[1],
-                'slug' => str_replace(strtolower($data[1]), ' ', '_'),
+                'slug' => strtolower(str_replace(' ', '_', $data[1])),
             ]);
+
+            if ($data[0] == 1) {
+                $role->permissions()->attach(Permission::all());
+            } else {
+                $role->permissions()->syncWithoutDetaching(Permission::inRandomOrder()->limit(10)->get());
+            }
         }
     }
 }

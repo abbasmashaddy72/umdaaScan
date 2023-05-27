@@ -5,7 +5,7 @@
         <div class="grid grid-cols-5 gap-2">
             @foreach ($permissions as $permission)
                 <x-checkbox id="{{ $permission->slug }}" label="{{ $permission->name }}"
-                    wire:model.defer='permissions_array.{{ $permission->id }}' />
+                    wire:model.defer='permissions_array' value="{{ $permission->id }}" />
             @endforeach
         </div>
     </div>

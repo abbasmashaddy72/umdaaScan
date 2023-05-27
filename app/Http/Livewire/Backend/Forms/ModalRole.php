@@ -25,9 +25,7 @@ class ModalRole extends ModalComponent
         $data = Role::findOrFail($this->role_id);
         $this->name = $data->name;
         $this->slug = $data->slug;
-        $this->permissions_array = Permission::whereHas('roles', function ($query) {
-            $query->where('id', $this->role_id);
-        })->get('id')->toArray();
+        $this->permissions_array = $data->permissions->pluck('id')->toArray();
     }
 
     protected $rules = [
@@ -49,18 +47,14 @@ class ModalRole extends ModalComponent
 
             Role::where('id', $this->role_id)->update($validatedData);
 
-            foreach (array_filter($this->permissions_array) as $key => $item) {
-                $role->permissions()->syncWithoutDetaching($key);
-            }
+            $role->permissions()->sync($this->permissions_array);
 
             $this->notification()->success($title = 'Role Updated Successfully!');
         } else {
-            $validatedData['slug'] = str_replace(' ', '-', strtolower($validatedData['name']));
+            $validatedData['slug'] = str_replace(' ', '_', strtolower($validatedData['name']));
             $role = Role::create($validatedData);
 
-            foreach (array_filter($this->permissions_array) as $key => $item) {
-                $role->permissions()->attach($key);
-            }
+            $role->permissions()->sync($this->permissions_array);
 
             $this->notification()->success($title = 'Role Saved Successfully!');
         }
