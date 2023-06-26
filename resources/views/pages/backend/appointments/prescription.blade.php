@@ -6,19 +6,4 @@
             </a>
         @endforeach
     </div>
-    @push('scripts')
-        <script>
-            // document.addEventListener('DOMContentLoaded', function() {
-            //     var gallery = document.querySelectorAll('[data-lightbox="prescription_images{{ $name }}"]');
-            //     var options = {
-            //         'zoom': true
-            //     };
-
-            //     lightbox.option(gallery, options);
-            // });
-            lightbox.option({
-                'zoom': true,
-            })
-        </script>
-    @endpush
 @endcan

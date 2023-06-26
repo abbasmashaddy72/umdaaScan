@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.1",
         "asantibanez/livewire-charts": "*",
-        "barryvdh/laravel-dompdf": "*",
+        "barryvdh/laravel-dompdf": "^2.0",
         "bepsvpt/secure-headers": "*",
         "binarytorch/larecipe": "*",
         "davmixcool/laravel-meta-manager": "*",

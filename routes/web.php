@@ -27,6 +27,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['web', 'au
     Route::get('patients', 'PatientController@index')->name('patients.index');
     Route::get('doctors', 'DoctorController@index')->name('doctors.index');
     Route::get('appointments', 'AppointmentController@index')->name('appointments.index');
+    Route::get('print/{appointment_profile}', 'AppointmentController@appointment_profile')->name('appointments.appointment_profile');
 
 
     Route::get('/profile', 'ProfileController@edit')->name('profile.edit');

@@ -35,6 +35,12 @@ class AppLayout extends Component
                 'title' => 'Dashboard',
                 'route_name' => 'admin.dashboard',
             ],
+            'appointments' => [
+                'can' => 'appointment_list',
+                'icon' => 'clock',
+                'title' => 'Appointments',
+                'route_name' => 'admin.appointments.index',
+            ],
             'roles' => [
                 'can' => 'role_list',
                 'icon' => 'settings',
@@ -59,12 +65,6 @@ class AppLayout extends Component
                 'title' => 'Patients',
                 'route_name' => 'admin.patients.index',
             ],
-            'appointments' => [
-                'can' => 'appointment_list',
-                'icon' => 'clock',
-                'title' => 'Appointments',
-                'route_name' => 'admin.appointments.index',
-            ]
         ];
     }
 
